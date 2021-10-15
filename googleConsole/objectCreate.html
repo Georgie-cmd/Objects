@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Create</title>
+</head>
+<script>
+
+    const dataBoutUser = Object.create({}, {
+    usersName: {
+        value: 'Herman Murauyou',
+        enumerable: true,
+        writable: false
+    },
+    usersBirth: {
+        value: 2002,
+        enumerable: true,
+        writable: false
+    },
+    usersCountry: {
+        value: 'Belarus',
+        enumerable: true,
+        writable: true,
+        configurable: true
+    },
+    calculateAge: {
+        get() {
+            return new Date().getFullYear() - this.usersBirth
+        },
+        set(value) {
+            console.log('Set age:', value)
+        }
+    }
+
+})
+
+dataBoutUser.usersCountry = 'Moved to another country...'
+//delete dataBoutUser.usersCountry
+
+
+for(let keyBoutUser in dataBoutUser){
+    console.log('Key:', keyBoutUser + ':', dataBoutUser[keyBoutUser])
+}
+</script>
+<body>
+    
+</body>
+</html>
